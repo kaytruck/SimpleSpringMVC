@@ -25,3 +25,13 @@ java {
     }
 }
 
+war {
+    archiveFileName = getProperty("war.name")
+}
+
+task deployLocalWar(type: Copy) {
+    dependsOn war
+
+    from war.archivePath
+    into getProperty("deploy.path")
+}
